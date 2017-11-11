@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "promise-to-callback": "^1.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "tape": "^4.8.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kumavis/cbify.git"
