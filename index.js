@@ -13,8 +13,13 @@ module.exports = function cbify (fn, context) {
     } else {
       callback = fallbackCallback
     }
-    const promise = fn.apply(context, args)
-    if (!isPromise(promise)) return callback(new Error('cbify - fn did not return a promise'))
+    let promise
+    try {
+      const maybePromise = fn.apply(context, args)
+      promise = isPromise(maybePromise) ? maybePromise : Promise.resolve(maybePromise)
+    } catch (err) {
+      promise = Promise.reject(err)
+    }
     promiseToCallback(promise)(callback)
   }
 }

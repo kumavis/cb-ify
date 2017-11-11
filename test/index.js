@@ -47,11 +47,25 @@ test('error', (t) => {
 
 test('sync fn', (t) => {
 
-  const fn = cbify(() => {})
+  const fn = cbify(() => 42)
+
+  fn((err, result) => {
+    t.notOk(err, 'no error')
+    t.equal(result, 42, 'correct result')
+    t.end()
+  })
+
+})
+
+test('sync error', (t) => {
+
+  const fn = cbify(() => {
+    throw new Error('boom!')
+  })
 
   fn((err, result) => {
     t.ok(err, 'has error')
-    t.ok(err.message.includes('did not return a promise'), 'contains relevant error message')
+    t.ok(err.message.includes('boom!'), 'contains original error message')
     t.notOk(result, 'no result')
     t.end()
   })
