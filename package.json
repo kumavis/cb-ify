@@ -1,6 +1,6 @@
 {
-  "name": "cbify",
-  "version": "1.0.1",
+  "name": "cb-ify",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "node test"
@@ -21,5 +21,5 @@
     "url": "https://github.com/kumavis/cbify/issues"
   },
   "homepage": "https://github.com/kumavis/cbify#readme",
-  "description": ""
+  "description": "callbackify your promise-returning fns"
 }
