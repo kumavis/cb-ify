@@ -16,3 +16,14 @@ fn((err, result) => {
   console.log(result)
 })
 ```
+
+also works with sync fns
+
+```js
+const fn = cbify(() => 42)
+
+fn((err, result) => {
+  if (err) throw err
+  console.log(result)
+})
+```
