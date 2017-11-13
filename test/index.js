@@ -71,3 +71,22 @@ test('sync error', (t) => {
   })
 
 })
+
+test('obj', (t) => {
+
+  const obj = cbify({
+    a: async () => 'a',
+    b: async () => 'b',
+  })
+
+  t.equal(typeof obj, 'object', 'returned obj')
+  t.ok(obj.a, 'has child "a"')
+  t.equal(typeof obj.a, 'function', 'child is fn')
+
+  obj.a((err, result) => {
+    t.notOk(err, 'no error')
+    t.equal(result, 'a', 'correct result')
+    t.end()
+  })
+
+})
