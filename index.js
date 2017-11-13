@@ -7,8 +7,8 @@ module.exports = function cbify (target, context) {
   if (type === 'object') {
     return mapObject(target, (key, value) => {
       if (typeof value !== 'function') return value
-      return cbifyFn(value, context)
-    })
+      return cbifyFn(value, context || target)
+    })  
   }
   throw Error(`cb-ify - unable to callbackify type "${type}"`)
 }

@@ -90,3 +90,18 @@ test('obj', (t) => {
   })
 
 })
+
+test('obj this ref', (t) => {
+
+  const source = {
+    a: function() { return this },
+  }
+  const obj = cbify(source)
+
+  obj.a((err, result) => {
+    t.notOk(err, 'no error')
+    t.equal(result, source, 'correct result')
+    t.end()
+  })
+
+})
